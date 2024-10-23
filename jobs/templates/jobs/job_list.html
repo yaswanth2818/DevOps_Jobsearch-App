@@ -1,0 +1,21 @@
+{% extends 'jobs/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Jobs in {{ sector.name }}</h1>
+    <div class="row">
+        {% for job in jobs %}
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ job.title }}</h5>
+                    <p class="card-text">{{ job.company }} - {{ job.location }}</p>
+                    <p class="card-text">{{ job.description|truncatewords:20 }}</p>
+                    <a href="{% url 'job_detail' job.id %}" class="btn btn-secondary btn-block">View Job Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
